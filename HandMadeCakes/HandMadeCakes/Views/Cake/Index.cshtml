@@ -1,0 +1,61 @@
+﻿@model IEnumerable<CakeModel>
+
+
+
+
+
+
+
+
+
+    <div class="container">
+
+       
+
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-0 ">
+            @if (Model != null)
+            {
+                @if (Model.Count() > 0)
+                {
+                    @foreach (var Cake in Model)
+                    {
+
+                        <div class="card-body">
+                            <a type="submit" asp-controller="Cake" asp-action="Detalhes" asp-route-id="@Cake.Id">
+
+                                <img src="/imagem/@Cake.Capa" class="img-inside-card"  alt="">
+                            </a>
+
+
+                            <p>
+                            <h6 class="text-body-card">@Cake.Sabor</h6>
+                            </p>
+
+
+                        </div>
+                    } }
+                     else
+                                        {
+                                            <img src="..." class="img-inside-card" />
+                                        }
+
+                }
+            }
+        </div>
+
+  
+</div>
+
+
+
+
+
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+<!------------------------------>
