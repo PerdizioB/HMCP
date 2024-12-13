@@ -20,19 +20,19 @@ namespace Cakeria1000Video.Controllers
             return View(cakes);
         }
 
-        public IActionResult Cadastrar()
+        public IActionResult Register()
         {
             return View();
         }
 
-        public async Task<IActionResult> Detalhes(int id)
+        public async Task<IActionResult> Details(int id)
         {
             var cake = await _cakeInterface.GetCakePorId(id);
             return View(cake);
         }
 
 
-        public async Task<IActionResult> Editar(int id)
+        public async Task<IActionResult> Edit(int id)
         {
             var cake = await _cakeInterface.GetCakePorId(id);
 
@@ -47,7 +47,7 @@ namespace Cakeria1000Video.Controllers
 
 
         [HttpPost]
-        public async Task<IActionResult> Cadastrar(CakeCreateDto CakeCreateDto, IFormFile foto)
+        public async Task<IActionResult> Register(CakeCreateDto CakeCreateDto, IFormFile foto)
         {
             if (ModelState.IsValid)
             {

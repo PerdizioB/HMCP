@@ -49,10 +49,10 @@ namespace HandMadeCakes.Services.Cake
 
                 var Cake = new CakeModel
                 {
-                    Sabor = CakeCreateDto.Sabor,
-                    Descricao = CakeCreateDto.Descricao,
-                    Valor = CakeCreateDto.Valor,
-                    Capa = nomeCaminhoImagem
+                    Flavor = CakeCreateDto.Flavor,
+                    Description = CakeCreateDto.Description,
+                    Price = CakeCreateDto.Price,
+                    Cover = nomeCaminhoImagem
                 };
 
                 _context.Add(Cake);//salva dentro do BD
@@ -95,7 +95,7 @@ namespace HandMadeCakes.Services.Cake
             }
         }
 
-        public async Task<CakeModel> EditarCake(CakeModel Cake, IFormFile? foto)
+        public async Task<CakeModel> Edit(CakeModel Cake, IFormFile? foto)
         {
             try
             {
@@ -105,28 +105,28 @@ namespace HandMadeCakes.Services.Cake
 
                 if (foto != null)
                 {
-                    string caminhoCapaExistente = _sistema + "\\imagem\\" + CakeBanco.Capa;
+                    string caminhoCoverExistente = _sistema + "\\imagem\\" + CakeBanco.Cover;
 
-                    if (File.Exists(caminhoCapaExistente))
+                    if (File.Exists(caminhoCoverExistente))
                     {
-                        File.Delete(caminhoCapaExistente);
+                        File.Delete(caminhoCoverExistente);
                     }
 
                     nomeCaminhoImagem = GeraCaminhoArquivo(foto);
                 }
 
 
-                CakeBanco.Sabor = Cake.Sabor;
-                CakeBanco.Descricao = Cake.Descricao;
-                CakeBanco.Valor = Cake.Valor;
+                CakeBanco.Flavor = Cake.Flavor;
+                CakeBanco.Description = Cake.Description;
+                CakeBanco.Price = Cake.Price;
 
                 if (nomeCaminhoImagem != "")
                 {
-                    CakeBanco.Capa = nomeCaminhoImagem;
+                    CakeBanco.Cover = nomeCaminhoImagem;
                 }
                 else
                 {
-                    CakeBanco.Capa = Cake.Capa;
+                    CakeBanco.Cover = Cake.Cover;
                 }
 
                 _context.Update(CakeBanco);
@@ -165,7 +165,7 @@ namespace HandMadeCakes.Services.Cake
             try
             {
 
-                var Cakes = await _context.Cake.Where(CakeBanco => CakeBanco.Sabor.Contains(pesquisar)).ToListAsync();
+                var Cakes = await _context.Cake.Where(CakeBanco => CakeBanco.Flavor.Contains(pesquisar)).ToListAsync();
                 return Cakes;
 
             }
@@ -175,32 +175,20 @@ namespace HandMadeCakes.Services.Cake
             }
         }
 
-        public Task<CakeModel> CriarPizza(CakeCreateDto CakeCreateDto, IFormFile foto)
-        {
-            throw new NotImplementedException();
-        }
 
         public Task<List<CakeModel>> GetCake()
         {
             throw new NotImplementedException();
         }
 
-        public Task<CakeModel> GetPizzaPorId(int id)
-        {
-            throw new NotImplementedException();
-        }
 
-        public Task<CakeModel> EditarPizza(CakeModel pizza, IFormFile? foto)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<CakeModel> RemoverPizza(int id)
-        {
-            throw new NotImplementedException();
-        }
 
         public Task<List<CakeModel>> GetCakeFiltro(string? pesquisar)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<CakeModel> EditarCake(CakeModel Cake, IFormFile? foto)
         {
             throw new NotImplementedException();
         }

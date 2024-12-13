@@ -2,9 +2,9 @@
 {
     public class CakeCreateDto
     {
-        public string Sabor { get; set; } = string.Empty;
-        public string Capa { get; set; } = string.Empty;
-        public string Descricao { get; set; } = string.Empty;
-        public double Valor { get; set; }
+        public string Flavor { get; set; } = string.Empty;
+        public string Cover { get; set; } = string.Empty;
+        public string Description { get; set; } = string.Empty;
+        public double Price { get; set; }
     }
 }
