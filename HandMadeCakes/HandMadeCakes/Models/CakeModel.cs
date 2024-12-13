@@ -1,4 +1,7 @@
-﻿namespace HandMadeCakes.Models
+﻿
+using Microsoft.AspNetCore.Mvc;
+
+namespace HandMadeCakes.Models
 {
     public class CakeModel
     {
@@ -7,5 +10,7 @@
         public string Capa { get; set; } = string.Empty;
         public string Descricao { get; set; } = string.Empty;
         public double Valor { get; set; }
+
     }
+
 }

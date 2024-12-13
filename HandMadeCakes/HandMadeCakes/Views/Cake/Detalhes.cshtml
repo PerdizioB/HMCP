@@ -50,7 +50,61 @@
             <p>
                 @Model.Descricao
             </p>
+
+
+
+            <label>
+                <input type="checkbox" id="isSelected">
+
+                <span>SMALL</span>
+                <div id="confirmation" style="display:none">
+                <ul class="list-group list-group-flush">
+                        <li class="list-group-item"> £ @(Model.Valor)</li>
+                   
+                </ul>
+                </div>
+            </label>
+
+            <label>
+                <input type="checkbox" id="isSelectedM">
+
+                <span>MEDIUM</span>
+                <div id="confirmationM" style="display:none">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item"> £ @(Model.Valor + 15)</li>
+
+                    </ul>
+                </div>
+            </label>
+
+
+            <label>
+                <input type="checkbox" id="isSelectedL">
+
+                <span>LARGE</span>
+                <div id="confirmationL" style="display:none">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item"> £ @(Model.Valor + 25)</li>
+
+                    </ul>
+                </div>
+            </label>
+
+
+
+
+
+
+
+
+
+              @*       <img src="/imagem/iconCake.png" alt="" width=25 /> *@
+          
+             
         </div>
+
        
     </div>
+
+
 </body>
