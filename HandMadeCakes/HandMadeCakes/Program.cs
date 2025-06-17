@@ -1,20 +1,29 @@
-using HandMadeCakes.Data;
 using Microsoft.EntityFrameworkCore;
-using HandMadeCakes.Data;
+using HandMadeCakes.Areas.Identity.Data;
+using Microsoft.AspNetCore.Identity;
 using HandMadeCakes.Services.Cake;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation;
+
+
+
 
 var builder = WebApplication.CreateBuilder(args);
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
 
-// Add services to the container.
+builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(connectionString));
+builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = false).AddEntityFrameworkStores<AppDbContext>();
 builder.Services.AddControllersWithViews();
+builder.Services.AddRazorPages();
+builder.Services.AddMvc().AddRazorRuntimeCompilation();
 
-
-builder.Services.AddDbContext<AppDbContext>(options =>
+builder.Services.Configure<IdentityOptions>(options =>
 {
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+    options.Password.RequireUppercase = false;
 });
 
 builder.Services.AddScoped<ICakeInterface, CakeService>();
+
 
 var app = builder.Build();
 

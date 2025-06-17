@@ -1,0 +1,55 @@
+﻿@model IEnumerable<CakeModel>
+
+
+<div class="py-5">
+
+    <div class="container">
+
+         <div class="row py-5 ">
+                <div class="col-lg-5 m-auto text-center">
+                    <h1>
+                        Celebrate In Style </h1>
+                    <h6 style="color: red;">   Birthday Cakes </h6>
+                    
+                </div>
+            </div>
+       
+            </div>
+
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-0 ">
+            @if (Model != null)
+            {
+                @if (Model.Count() > 0)
+                {
+                    @foreach (var Cake in Model)
+                    {
+
+                        <div class="card-body">
+                            <div class="card">
+                            <a type="submit" class="btn2" asp-controller="Cake" asp-action="Details" asp-route-id="@Cake.Id">
+
+                                <img src="/imagem/@Cake.Cover" class="img-inside-card"  alt="">
+                            </a>
+
+
+                            </div>
+                            <p>
+                            <h6 class="text-body-card">@Cake.Flavor</h6>
+                            </p>
+
+
+                        <div class="btn-box d-flex mt-3">
+                            <a type="submit" class="btn btn-primary" asp-controller="Cake" asp-action="Edit" asp-route-id="@Cake.Id"><i class="bi bi-arrow-left-circle"></i> Edit</a>
+                            <a type="submit" class="btn btn-warning" asp-controller="Cake" asp-action="Register" asp-route-id="@Cake.Id"><i class="bi bi-arrow-left-circle"></i> Register</a>
+                        </div>
+
+
+
+                        </div>
+                    }
+                }
+            }
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,123 @@
+﻿
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - HandMadeCakes</title>
+    <link rel="stylesheet" href="assets/bootstrap/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/HandMadeCakes.styles.css" asp-append-version="true" />
+</head>
+<body>
+
+        <nav class="navbar navbar-expand-lg ">
+            <div class="container">
+                <a class="navbar-brand" nav-link active" asp-area="" asp-controller="Home" asp-action="Index">Hand Made Cake</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarScroll">
+                    <ul class="navbar-nav m-auto my-2 my-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" asp-area="" asp-controller="Cake" asp-action="Index">Cake</a>
+                        </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link active" asp-area="" asp-controller="Cake" asp-action="Index">Store</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" asp-area="" asp-controller="Cake" asp-action="Index">Contact</a>
+                    </li>
+                
+                    </ul>
+                <form class="d-flex">
+                    <input class="px-2 search" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn0" type="submit">Search</button>
+                </form>
+                </div>
+            </div>
+        </nav> 
+
+<section class="main">
+    <div class="container py-5">
+<div class="row py-4">
+    <div class="col-lg-5 pt-1 text-center">
+        <h1 class="pt-2"> Fresh Handmade Cake!</h1>
+        <button class="btn1 mt-3"> More Tips </button>
+
+    </div>
+    
+
+</div>
+
+
+    </div>
+</section>
+
+<section class="new">
+    <div class="container py-5">
+        <div class="row py-10">
+            <div class="col-lg-7 m-auto" >
+                <div class="row text-center">
+                    <div class="col-lg-4">
+                        <img src="/imagem/cesta.jpg" class="img-luid" alt="" >
+                        <h6>CANDY</h6>
+                    </div>
+                           <div class="col-lg-4">
+                        <img src="/imagem/cesta.jpg"  class="img-luid" alt="" >
+                        <h6>ROLLS</h6>
+                    </div>
+                           <div class="col-lg-4">
+                        <img src="/imagem/cesta.jpg"  class="img-luid" alt="" >
+                        <h6>Cake</h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+    <section class="product">
+        <div class="container py-5">
+            <a class="navbar-brand" nav-link active" asp-area="" asp-controller="Home" asp-action="Index">Hand Made Cake</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+
+
+          
+       
+    </section>
+
+
+
+
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div> 
+    
+    @* <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2024 - HandMadeCakes - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer> *@
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

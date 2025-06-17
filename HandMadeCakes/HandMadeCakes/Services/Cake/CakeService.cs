@@ -1,4 +1,4 @@
-﻿using HandMadeCakes.Data;
+﻿using HandMadeCakes.Areas.Identity.Data;
 using HandMadeCakes.Dto;
 using HandMadeCakes.Models;
 using Microsoft.EntityFrameworkCore;
