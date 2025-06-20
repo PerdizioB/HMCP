@@ -15,6 +15,9 @@ namespace HandMadeCakes.Data
 
         // Adicione outros DbSet se necessário
         public DbSet<CakeModel> Cake { get; set; }
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<OrderItem> OrderItems { get; set; }
+
     }
 
 
@@ -22,6 +25,6 @@ namespace HandMadeCakes.Data
 
 
 
-        
-    
+
+
 }

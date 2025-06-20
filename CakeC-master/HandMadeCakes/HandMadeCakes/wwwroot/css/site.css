@@ -1,3 +1,4 @@
+/* ===== Seu reset e base ===== */
 * {
     padding: 0;
     margin: 0;
@@ -5,6 +6,8 @@
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
 }
+
+/* Navegação */
 .nav-brand {
     font-size: 2rem;
     color: rgba(116,93,53);
@@ -13,6 +16,7 @@
     .nav-brand:hover {
         color: rgba(116,93,53);
     }
+
 .nav-link {
     margin-right: 10px;
     margin-left: 10px;
@@ -20,9 +24,12 @@
     font-family: 'Rubik', sans-serif;
     text-transform: uppercase;
 }
+
     .nav-link:hover {
         color: rgba(116,93,53);
     }
+
+/* Search e botões */
 .search {
     height: 40px;
     width: 80%;
@@ -32,6 +39,7 @@
     font-family: 'Rubik', sans-serif;
     border: 2px solid rgb(248, 26, 92);
 }
+
 .btn0 {
     height: 40px;
     width: 40%;
@@ -43,87 +51,86 @@
     font-weight: 700;
 }
 
-
-
-html {
-  font-size: 14px;
-}
-
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
-}
-
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
-}
-
-html {
-  position: relative;
-  min-height: 100%;
-} 
-body {
-  margin-bottom: 60px;
-}
-.navbar {
-    margin-bottom: 50px;
-    border-radius: 0;
-}
-
-.main{
-background: url(../imagem/titulo.png) no-repeat;
-background-size:cover;
-height:70vh;
-background-position:50% 50%;
-width: 100%;
-
-
-}
-    .main h1 {
-        font-size: 4rem;
-        font-weight: 700;
-        color: rgba(116,93,53);
-       
-    }
 .btn1 {
     height: 45px;
     width: 35%;
     border: none;
     outline: none;
     background-color: rgb(248, 26, 92);
-    color:white;
-    font-weight:700;
-    border-radius:60px;
+    color: white;
+    font-weight: 700;
+    border-radius: 60px;
 }
+
 .btn2 {
- 
-   
     outline: none;
     border-radius: 60px;
     align-content: center;
 }
-h1 {
+
+/* Fonte geral */
+html {
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+body {
+    margin-bottom: 60px;
+    font-family: 'Open Sans', sans-serif;
+    background-color: #f4f9f4;
+    color: #2e2e2e;
+}
+
+/* Foco nos botões */
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+/* Navbar */
+.navbar {
+    margin-bottom: 50px;
+    border-radius: 0;
+}
+
+/* Main banner */
+.main {
+    background: url(../imagem/titulo.png) no-repeat;
+    background-size: cover;
+    height: 70vh;
+    background-position: 50% 50%;
+    width: 100%;
+}
+
+    .main h1 {
+        font-size: 4rem;
+        font-weight: 700;
+        color: rgba(116,93,53);
+    }
+
+/* Títulos */
+h1, h2 {
+    font-family: 'Playfair Display', serif;
     font-weight: 700;
     color: rgba(116,93,53);
 }
 
-/* Remove the jumbotron's default bottom margin */
-.jumbotron {
-    margin-bottom: 0;
-}
-
-
+/* Container texto-imagem */
 .container2 {
     width: 900px;
     height: 400px;
     background-color: rgb(134,194,155);
     margin: 0 auto;
-    display:flex;
-    padding:30px;
-    text-align:justify;
+    display: flex;
+    padding: 30px;
+    text-align: justify;
 }
 
+/* Texto com borda arredondada */
 .text {
     padding: 20px;
     width: 550px;
@@ -132,15 +139,18 @@ h1 {
     border-style: solid;
     border-radius: 50px;
     border-color: rgb(134,194,155);
-    h2{
-    color: rgba(116,93,53);
 }
-      p{
-          font-size:16px;
-          margin-top:15px;
-      }
 
-}
+    .text h2 {
+        color: rgba(116,93,53);
+    }
+
+    .text p {
+        font-size: 16px;
+        margin-top: 15px;
+    }
+
+/* Imagens arredondadas */
 .image {
     width: 450px;
     height: 400px;
@@ -148,9 +158,10 @@ h1 {
     justify-content: center;
     border-color: rgba(116,93,53);
 }
+
 .img-inside-border {
     border-style: solid;
-    border-radius:50px;
+    border-radius: 50px;
     width: 350px;
     height: 350px;
     border-color: rgb(134,194,155);
@@ -163,113 +174,95 @@ h1 {
     height: 349px;
 }
 
+/* Texto centralizado nos cards */
 .text-body-card {
     text-align: center;
 }
 
-.card:hover {
-    border-block-style: none;
-    border-radius: 50px;
-    -webkit-box-shadow: -2px 0px 25px -4px rgba(0,0,0,0.75);
-    -moz-box-shadow: -2px 0px 25px -4px rgba(0,0,0,0.75);
-    box-shadow: -2px 0px 25px -4px rgba(0,0,0,0.75);
-    transition: 0.5S;
-}
-/* Faça como quiser */
-label {
-
-    width: 25%;
-    padding: 0 4px;
-    margin-bottom: 8px;
-    float: left;
-    text-align: center;
+/* ===== Estilo melhorado para os cards ===== */
+.card {
+    border-radius: 1rem; /* arredondar o card */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background-color: white;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
     cursor: pointer;
 }
 
-    /* Esconde a caixa de seleção */
-    /* (Creio que opacity:0 e display:none também funcionem) */
-    label input[type=checkbox] {
-        position: absolute;
-        clip: rect(0,0,0,0);
-       
-     
+    .card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
     }
 
-    /* Padrão dos itens */
-    label span {
-        display: block;
-        background-color: rgb(134,194,155);
-        color:  rgba(116,93,53);
-        padding: 8px;
-        font-size: 15px;
-        border: 2px solid #1b4486;
-        width: 100%;
-        height: 200%;
-        font-family: 'Rubik', sans-serif;
-        text-transform: uppercase;
-        border-style: none;
-        border-radius: 50px
+    /* Imagem do card: arredondada e com objeto ajustado */
+    .card img, .card .img-inside-card {
+        border-top-left-radius: 1rem;
+        border-top-right-radius: 1rem;
+        object-fit: cover;
     }
 
-    /* Quando mouse passa por cima */
-    label:hover span {
-        background-color: rgb(248, 26, 92);
-        color: #1b4486;
-        border-style: none;
-        border-radius: 50px;
-        font-family: 'Rubik', sans-serif;
-        text-transform: uppercase;
-        box-shadow: 1px 1px 5px rgba(255,255,255,.4) inset;
-    }
-
-    /* Quando item selecionado */
-    label input[type=checkbox]:checked + span {
-        background-color: #1b4486;
-        border-style: none;
-        border-radius: 50px;
-        color: #fff;
-        font-family: 'Rubik', sans-serif;
-        text-transform: uppercase;
-    }
-
-    /* Quando mouse passa por cima de item selecionado */
-    label:hover input[type=checkbox]:checked + span {
-        background-color: #d44950;
-        border-color: #ffcc0f;
-        border-style: none;
-        border-radius: 50px
-    }
-
-
-.fake-input {
-    position: relative;
-    width: 240px;
+/* Título do card */
+.card-title {
+    color: #2c6e49;
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
-    .fake-input input {
-        border: none: background:#fff;
-        display: block;
-        width: 100%;
-        box-sizing: border-box
-    }
-
-    .fake-input img {
-        position: absolute;
-        top: 10px;
-        right: 5px
-    }
-.confirmation {
-    text-align: center;
-    display: none;
+/* Texto do card */
+.card-text {
+    color: #617d58;
 }
 
-
-
-
+/* Botões dentro do card */
+.btn-outline-primary, .btn-outline-warning {
+    border-width: 2px;
+    font-weight: 600;
+    border-radius: 30px;
+    transition: background-color 0.3s, color 0.3s;
 }
-/* Add a gray background color and some padding to the footer */
+
+.btn-outline-primary {
+    color: #0d6efd;
+    border-color: #0d6efd;
+}
+
+    .btn-outline-primary:hover {
+        background-color: #0d6efd;
+        color: white;
+    }
+
+.btn-outline-warning {
+    color: #ffc107;
+    border-color: #ffc107;
+}
+
+    .btn-outline-warning:hover {
+        background-color: #ffc107;
+        color: black;
+    }
+
+/* Botões padrão sucesso (se usar) */
+.btn-success {
+    background-color: #4caf50;
+    border: none;
+    font-weight: 600;
+}
+
+    .btn-success:hover {
+        background-color: #388e3c;
+    }
+
+/* Footer */
 .footer {
     background-color: #f2f2f2;
     padding: 25px;
 }
 
+/* Responsive images */
+@media (max-width: 576px) {
+    .card-img-top {
+        height: 180px !important;
+    }
+}

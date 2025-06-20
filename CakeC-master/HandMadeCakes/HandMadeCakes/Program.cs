@@ -1,6 +1,9 @@
 using HandMadeCakes.Data;
 using HandMadeCakes.Models;
+using HandMadeCakes.Services;
 using HandMadeCakes.Services.Cake;
+using HandMadeCakes.Services.Cart;
+using HandMadeCakes.Services.Checkout;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -22,6 +25,14 @@ builder.Services.AddScoped<ICakeInterface, CakeService>();
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
 
+builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+builder.Services.AddScoped<ICartService, CartService>();
+
+builder.Services.AddScoped<IOrderRepository, OrderRepository>();
+builder.Services.AddScoped<ICheckoutService, CheckoutService>();
+
+builder.Services.AddSession();
+
 var app = builder.Build();
 
 if (!app.Environment.IsDevelopment())
@@ -34,6 +45,7 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+app.UseSession();
 
 app.UseAuthentication(); // ?? IMPORTANTE
 app.UseAuthorization();
@@ -41,6 +53,8 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+
+   
 
 app.MapRazorPages(); // ?? para Login/Register
 

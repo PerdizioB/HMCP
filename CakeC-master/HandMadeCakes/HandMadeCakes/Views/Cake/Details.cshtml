@@ -1,76 +1,61 @@
 ﻿@model CakeModel
 
-<body>
-<div class="container2">
-  
-        
-            <div class="image">
-            <img src="/imagem/@Model.Cover" alt="" class="img-inside-border"/>
-           
-
-
-            
-            </div>
-        <div class="text">
-            <h2>@Model.Flavor</h2>
-            <p>
-                @Model.Description
-            </p>
-
-
-
-            <label>
-                <input type="checkbox" id="isSelected">
-
-                <span>SMALL</span>
-                <div id="confirmation" style="display:none">
-                <ul class="list-group list-group-flush">
-                        <li class="list-group-item"> £ @(Model.Price)</li>
-                   
-                </ul>
-                </div>
-            </label>
-
-            <label>
-                <input type="checkbox" id="isSelectedM">
-
-                <span>MEDIUM</span>
-                <div id="confirmationM" style="display:none">
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item"> £ @(Model.Price + 15)</li>
-
-                    </ul>
-                </div>
-            </label>
-
-
-            <label>
-                <input type="checkbox" id="isSelectedL">
-
-                <span>LARGE</span>
-                <div id="confirmationL" style="display:none">
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item"> £ @(Model.Price + 25)</li>
-
-                    </ul>
-                </div>
-            </label>
-
-
-
-
-
-
-
-
-
-              @*       <img src="/imagem/iconCake.png" alt="" width=25 /> *@
-          
-             
+<div class="container my-5">
+    <div class="row g-4">
+        <div class="col-md-6 text-center">
+            <img src="/imagem/@Model.Cover" alt="@Model.Flavor" class="img-fluid rounded-4 shadow-sm" style="max-height: 350px; object-fit: cover;" />
         </div>
 
-       
+        <div class="col-md-6 d-flex flex-column justify-content-center">
+            <h2 class="mb-3">@Model.Flavor</h2>
+            <p class="mb-4 text-secondary">@Model.Description</p>
+
+            <form asp-controller="Cart" asp-action="Add" method="post" id="addToCartForm">
+                <input type="hidden" name="id" value="@Model.Id" />
+                <input type="hidden" name="name" value="@Model.Flavor" />
+                <input type="hidden" id="selectedPrice" name="price" value="@Model.Price" />
+                <input type="hidden" id="selectedSize" name="size" value="Small" />
+
+                <div class="mb-4">
+                    <label class="form-label fw-semibold">Select Size:</label>
+                    <div class="btn-group" role="group" aria-label="Cake size options">
+                        <input type="radio" class="btn-check" name="sizeOption" id="sizeSmall" autocomplete="off" value="Small" checked>
+                        <label class="btn btn-outline-primary" for="sizeSmall">Small (£@Model.Price)</label>
+
+                        <input type="radio" class="btn-check" name="sizeOption" id="sizeMedium" autocomplete="off" value="Medium">
+                        <label class="btn btn-outline-primary" for="sizeMedium">Medium (£@(Model.Price + 15))</label>
+
+                        <input type="radio" class="btn-check" name="sizeOption" id="sizeLarge" autocomplete="off" value="Large">
+                        <label class="btn btn-outline-primary" for="sizeLarge">Large (£@(Model.Price + 25))</label>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-lg w-100 rounded-pill">
+                    <i class="bi bi-cart-plus-fill me-2"></i> Add to Cart
+                </button>
+            </form>
+        </div>
     </div>
+</div>
 
+<script>
+    document.querySelectorAll('input[name="sizeOption"]').forEach(radio => {
+        radio.addEventListener('change', function () {
+            const size = this.value;
+            const priceInput = document.getElementById('selectedPrice');
+            const sizeInput = document.getElementById('selectedSize');
 
-</body>
+            let basePrice = @Model.Price;
+            let price = basePrice;
+
+            if (size === 'Medium') {
+                price += 15;
+            } else if (size === 'Large') {
+                price += 25;
+            }
+
+            priceInput.value = price.toFixed(2);
+            sizeInput.value = size;
+        });
+    });
+</script>

@@ -1,81 +1,74 @@
 ﻿@model CakeModel
 
-<div class="container mt-5">
-    <form method="post" asp-action="Edit" asp-controller="Cake" enctype="multipart/form-data">
-        <h2>Edição de Bolo - @Model.Flavor</h2>
+<div class="container mt-5 mb-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+            <div class="card shadow-lg border-0 rounded-4">
+                <div class="card-body p-4">
+                    <h2 class="text-center mb-4">Edit Cake - <span class="text-primary">@Model.Flavor</span></h2>
 
-        <input type="hidden" asp-for="Id" />
+                    <form method="post" asp-action="Edit" asp-controller="Cake" enctype="multipart/form-data">
+                        <input type="hidden" asp-for="Id" />
+                        <input type="hidden" asp-for="Cover" />
 
-        @if (Model.Cover != null)
-        {
-            <div class="text-center">
-                <label for="ImageFile">
-                    <img src="/imagem/@Model.Cover" id="img" style="width:150px; height:200px" />
-                </label>
+                        @if (Model.Cover != null)
+                        {
+                            <div class="text-center mb-3">
+                                <label for="ImageFile">
+                                    <img src="/imagem/@Model.Cover" id="img" class="img-fluid rounded shadow" style="max-height: 200px; cursor: pointer;" />
+                                </label>
+                            </div>
+                        }
+
+                        <div class="mb-3">
+                            <label class="form-label">New Cover Image</label>
+                            <input type="file" id="ImageFile" name="foto" class="form-control shadow-sm" />
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Flavor</label>
+                            <input type="text" asp-for="Flavor" class="form-control shadow-sm" />
+                            <span class="text-danger" asp-validation-for="Flavor"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Description</label>
+                            <textarea asp-for="Description" class="form-control shadow-sm"></textarea>
+                            <span class="text-danger" asp-validation-for="Description"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Price</label>
+                            <input type="number" min="1" step="any" asp-for="Price" class="form-control shadow-sm" />
+                            <span class="text-danger" asp-validation-for="Price"></span>
+                        </div>
+
+                        <div class="d-flex justify-content-between gap-2 mt-4">
+                            <button type="submit" class="btn btn-success w-100">
+                                <i class="bi bi-pencil-square me-1"></i> Save Changes
+                            </button>
+                            <a asp-controller="Home" asp-action="Index" class="btn btn-secondary w-100">
+                                <i class="bi bi-arrow-left-circle me-1"></i> Back
+                            </a>
+                        </div>
+                    </form>
+                </div>
             </div>
-
-        }
-
-
-        <input type="hidden" asp-for="Cover" />
-        <div class="mb-1">
-            <label class="form-label mt-3">Cover:</label>
-            <input type="file" id="ImageFile" name="foto" class="form-control shadow-none" />
         </div>
-
-        <div class="mb-1">
-            <label class="form-label">Flavor:</label>
-            <input type="text" asp-for="Flavor" class="form-control shadow-none">
-            <span class="text-danger" asp-validation-for="Flavor"></span>
-        </div>
-        <div class="mb-1">
-            <label class="form-label">Description:</label>
-            <textarea type="text" asp-for="Description" class="form-control shadow-none"></textarea>
-            <span class="text-danger" asp-validation-for="Description"></span>
-        </div>
-        <div class="mb-1">
-            <label class="form-label">Price:</label>
-            <input type="number" min="1" step="any" asp-for="Price" class="form-control shadow-none">
-            <span class="text-danger" asp-validation-for="Price"></span>
-        </div>
-
-
-
-        <div class="btn-box d-flex mt-3">
-            <button type="submit" type="button" class="btn btn-success w-50 mx-1"><i class="bi bi-plus-circle"></i> Edit!</button>
-            <a type="submit" class="btn btn-info w-50" asp-controller="Home" asp-action="Index"><i class="bi bi-arrow-left-circle"></i> Voltar</a>
-        </div>
-
-    </form>
+    </div>
 </div>
 
-
-
 <script>
-
-
     const inputFile = document.querySelector("#ImageFile");
 
     inputFile.addEventListener("change", function (e) {
-        const inputTarget = e.target;
-        const file = inputTarget.files[0];
-
+        const file = e.target.files[0];
         if (file) {
             const reader = new FileReader();
-
-            reader.addEventListener("load", function (e) {
-                const readerTarget = e.target;
-                const img = document.querySelector("#img");
-                img.src = readerTarget.result;
-
-                const figcaption = document.querySelector("#figcaption");
-                figcaption.innerHTML = file.name;
-            });
-
+            reader.onload = function (event) {
+                document.querySelector("#img").src = event.target.result;
+            };
             reader.readAsDataURL(file);
         }
-    }
-
-
-    )
+    });
 </script>
