@@ -25,51 +25,63 @@ HMCP is an e-commerce web application built with ASP.NET Core MVC and Entity Fra
 
    ```bash
    git clone https://github.com/PerdizioB/HMCP.git
-Open the solution in Visual Studio or VS Code.
 
-Configure the database connection string in the appsettings.json file.
+2. **Open the solution**  
+   Open the project solution in Visual Studio or Visual Studio Code.
 
-Run the migrations to create the database:
 
-bash
-Copy
-Edit
-dotnet ef database update
-Run the application:
+3. **Configure the database**  
+   Update the database connection string in the `appsettings.json` file to point to your database.
 
-bash
-Copy
-Edit
-dotnet run
-Open your browser and navigate to https://localhost:5001 (or your configured port).
+4. **Apply migrations**  
+   Run the following command to create the database and apply migrations:  
+   ```bash
+   dotnet ef database update
+5. Run the application  
+   ```bash
+   dotnet run
+6. Open your browser and navigate to:
+https://localhost:port
 
-Project Structure
-Controllers/ - Contains MVC controllers responsible for business logic and route control.
+## Project Structure
 
-Models/ - Defines the entities and data models used in the application.
+- **Controllers/**: MVC controllers handling business logic and routes  
+- **Models/**: Entities and data models  
+- **Views/**: Razor views for the frontend pages  
+- **Data/**: Entity Framework context and database configurations  
+- **wwwroot/**: Static files (CSS, JavaScript, images)
+- 
+## Contributing
 
-Views/ - Razor views for frontend pages.
+Contributions are always welcome! To contribute to this project, please follow these steps:
 
-Data/ - Entity Framework context and database configurations.
+1. **Fork** the repository to create your own copy.  
+2. **Create a new branch** for your feature or bugfix:  
+   ```bash
+   git checkout -b my-feature
+3. Commit your changes with a descriptive message:
 
-wwwroot/ - Static files like CSS, JavaScript, and images.
+   ```bash
+   git commit -m "Add some feature"
 
-Contributing
-Contributions are welcome! To contribute:
+4. Push your branch to your forked repository:
+     ```bash
+   git push origin my-feature
+5.Open a Pull Request on the original repository to propose your changes.
 
-Fork the repository.
+## Contact
 
-Create a feature branch: git checkout -b my-feature
-
-Commit your changes: git commit -m 'Add some feature'
-
-Push to the branch: git push origin my-feature
-
-Open a Pull Request.
-
-Contact
-For questions, suggestions or support, please contact:
+For questions, suggestions, or support, please contact:  
 Fernanda Perdizio Bezerra - perdizio.uk@gmail.com
 
-License
+## License
+
 This project is licensed under the MIT License. See the LICENSE file for details.
+
+
+
+
+
+
+
+
