@@ -1,0 +1,49 @@
+﻿@model HandMadeCakes.Models.Order
+
+<h2>Order Details</h2>
+
+<div>
+    <p><strong>Order ID:</strong> @Model.Id</p>
+    <p><strong>Customer:</strong> @Model.FullName</p>
+    <p><strong>Email:</strong> @Model.Email</p>
+    <p><strong>Address:</strong> @Model.Address</p>
+    <p><strong>Order Date:</strong> @Model.OrderDate.ToString("dd/MM/yyyy HH:mm")</p>
+</div>
+
+<h3>Order Items</h3>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Cake ID</th>
+            <th>Cake</th>
+            <th>Quantity</th>
+            <th>Price</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.OrderItems)
+        {
+            <tr>
+                <td>@item.CakeId</td>
+                <td>@item.Cake.Flavor</td>
+                <td>@item.Quantity</td>
+                <td>@item.Price.ToString("C")</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<h3>Update Status</h3>
+<form asp-area="Admin" asp-controller="Order" asp-action="UpdateStatus" method="post" class="mb-3">
+    <input type="hidden" name="id" value="@Model.Id" />
+    <select name="status" class="form-select" style="max-width: 300px;">
+        <option value="Pending" selected="@("Pending" == Model.Status)">Pending</option>
+        <option value="Processing" selected="@("Processing" == Model.Status)">Processing</option>
+        <option value="Shipped" selected="@("Shipped" == Model.Status)">Shipped</option>
+        <option value="Delivered" selected="@("Delivered" == Model.Status)">Delivered</option>
+        <option value="Cancelled" selected="@("Cancelled" == Model.Status)">Cancelled</option>
+    </select>
+    <button type="submit" class="btn btn-primary mt-2">Save Status</button>
+</form>
+
+<a asp-area="Admin" asp-controller="Order" asp-action="Index">Back to Orders List</a>

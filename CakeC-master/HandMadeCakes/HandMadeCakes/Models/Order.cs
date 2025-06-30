@@ -2,13 +2,22 @@
 {
     public class Order
     {
-        public int Id { get; set; }
-        public DateTime OrderDate { get; set; } = DateTime.Now;
-        public string? CustomerName { get; set; }
-        public string? CustomerEmail { get; set; }
-        public string? ShippingAddress { get; set; }
-        public double TotalAmount { get; set; }
 
-        public List<OrderItem>? Items { get; set; }
+        public int Id { get; set; }
+        public string? FullName { get; set; }
+        public string? Address { get; set; }
+        public string? Phone { get; set; }
+        public string? Email { get; set; }
+        public string? Status { get; set; } = "Pending";
+
+        public DateTime OrderDate { get; set; }
+        public List<OrderItem> OrderItems { get; set; }
+        public decimal TotalAmount { get; set; }
+        public string? UserId { get; set; }
+
+        public ApplicationUser User { get; set; }
+
+
+
     }
 }

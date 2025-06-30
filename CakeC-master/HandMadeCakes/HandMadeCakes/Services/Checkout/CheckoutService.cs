@@ -4,6 +4,8 @@ using HandMadeCakes.Services.Cart;
 using HandMadeCakes.ViewModels;
 using System.Linq;
 using System.Threading.Tasks;
+using OrderModel = HandMadeCakes.Models.Order;
+
 
 namespace HandMadeCakes.Services.Checkout
 {
@@ -25,19 +27,19 @@ namespace HandMadeCakes.Services.Checkout
             if (cartItems == null || !cartItems.Any())
                 return false; // Carrinho vazio
 
-            var order = new Order
+            var order = new OrderModel
             {
-                CustomerName = checkout.Name,
-                CustomerEmail = checkout.Email,
-                ShippingAddress = checkout.Address,
-                OrderDate = System.DateTime.Now,
-                Items = cartItems.Select(ci => new OrderItem
+                FullName = checkout.Name,
+                Email = checkout.Email,
+                Address = checkout.Address,
+                OrderDate = DateTime.Now,
+                OrderItems = cartItems.Select(ci => new OrderItem
                 {
-                    ProductId = ci.CakeId,
+                    CakeId = ci.CakeId,
                     Quantity = ci.Quantity,
-                    UnitPrice = ci.Price
+                    Price = (decimal)ci.Price
                 }).ToList(),
-                TotalAmount = cartItems.Sum(ci => ci.Price * ci.Quantity)
+                TotalAmount = (decimal)cartItems.Sum(ci => ci.Price * ci.Quantity)
             };
 
             await _orderRepository.SaveOrderAsync(order);
